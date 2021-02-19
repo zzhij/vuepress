@@ -8100,6 +8100,16 @@ vuepress-plugin-container@^2.0.2:
     "@vuepress/shared-utils" "^1.2.0"
     markdown-it-container "^2.0.0"
 
+vuepress-plugin-demo-block@^0.7.2:
+  version "0.7.2"
+  resolved "https://mirrors.biknown.com/repository/npm-group/vuepress-plugin-demo-block/-/vuepress-plugin-demo-block-0.7.2.tgz#02fc4f0ef764052981accf41f1403fdb9f794c0d"
+  integrity sha1-AvxPDvdkBSmBrM9B8UA/2595TA0=
+
+vuepress-plugin-leo-demo-block@^0.1.1:
+  version "0.1.1"
+  resolved "https://mirrors.biknown.com/repository/npm-group/vuepress-plugin-leo-demo-block/-/vuepress-plugin-leo-demo-block-0.1.1.tgz#12b1b7681919fd9798e6960dd2b6bfc74642e787"
+  integrity sha1-ErG3aBkZ/ZeY5pYN0ra/x0ZC54c=
+
 vuepress-plugin-smooth-scroll@^0.0.3:
   version "0.0.3"
   resolved "https://mirrors.biknown.com/repository/npm-group/vuepress-plugin-smooth-scroll/-/vuepress-plugin-smooth-scroll-0.0.3.tgz#6eff2d4c186cca917cc9f7df2b0af7de7c8c6438"

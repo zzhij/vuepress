@@ -23,20 +23,18 @@
 ```js
 console.log(121212)
 ```
-::: v-pre
+::: demo
+```html
 <template>
-  <div>
-    ceshi
-  </div>
+  <div class="box-vue">Vue {{ message }}</div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      cout: 0
-    }
-  }
+  data: () => ({ message: 'Hello World' })
 }
-:::
-
 </script>
+<style>
+.box-vue { color: red; }
+</style>
+```
+:::

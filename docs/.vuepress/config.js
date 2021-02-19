@@ -2,6 +2,9 @@ module.exports = {
   title: '文档',
   description: '总结',
   theme: '@vuepress/theme-default',
+  plugins: [
+    'leo-demo-block'
+  ],
   themeConfig: {
     nav: [
       { text: '指南', link: '/guide/' },
