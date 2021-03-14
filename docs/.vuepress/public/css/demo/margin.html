@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>margin样式</title>
+  <style>
+    .margin-div {
+      width: 100px;
+    }
+
+    .margin-span {
+      background: #ccc;
+    }
+
+    .margin-span1 {
+      background: #333;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    .margin-div2 .margin-table1,
+    .margin-div2 .margin-table2 {
+      display: table-cell;
+      margin-top: 20px;
+    }
+
+    .margin-div3 {
+      margin-top: 50px;
+    }
+
+    .margin-div3 .margin-div-3 {
+      margin-top: 30px;
+    }
+
+    .margin-div4 {
+      position: relative;
+    }
+
+    .margin-div4 img {
+      position: absolute;
+      width: 200px;
+      top: 10%;
+      left: 30%;
+      margin-right: 30px;
+    }
+
+    .margin-div5 {
+      height: 100px;
+    }
+
+    .margin-div5 .child {
+      height: 80px;
+      margin-bottom: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>场景一</h2>
+  <div class="margin-div">
+    <span class="margin-span">
+      margin元素
+    </span>
+    <span class="margin-span1">
+      margin元素
+    </span>
+  </div>
+
+  <h2>场景二</h2>
+  <div class="margin-div2">
+    <div class="margin-table1">
+      margin-table1
+    </div>
+    <div class="margin-table2">
+      margin-table2
+    </div>
+  </div>
+
+  <h2>场景三</h2>
+  <div class="margin-div3">
+    <div class="margin-div-3">
+      margin-div-3
+    </div>
+  </div>
+
+  <h2>场景四</h2>
+  <div class="margin-div4">
+    margin-div4
+    <img src="/img/img1.jpg" alt />
+  </div>
+
+  <h2 style="margin-top: 100px;">场景五</h2>
+  <div class="margin-div5">
+    <div class="child">child</div>
+    <!-- <div>child</div> -->
+  </div>
+
+  <style>
+    .margin-div6 img {
+      width: 200px;
+      float: left;
+    }
+
+    .margin-div6 p {
+      overflow: hidden;
+      margin-left: 100px;
+    }
+  </style>
+  <h2>场景六</h2>
+  <div class="margin-div6">
+    <img src="/img/img1.jpg">
+    <p>内容</p>
+  </div>
+
+  <style>
+    .margin-div7 img {
+      height: 96px;
+      margin-top: -200px;
+    }
+  </style>
+
+  <h2 style="margin-top: 200px; margin-bottom: 100px;">场景七</h2>
+  <div class="margin-div7">
+    <img src="/img/img1.jpg">
+  </div>
+</body>
+
+</html>

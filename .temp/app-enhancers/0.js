@@ -1,2 +1,2 @@
-import "D:\\test\\github\\vue\\vue2\\vuepress\\node_modules\\@vuepress\\core\\lib\\node\\internal-plugins\\style\\client.js"
+import "D:\\project\\app\\github\\vuepress\\node_modules\\@vuepress\\core\\lib\\node\\internal-plugins\\style\\client.js"
 export default {}
