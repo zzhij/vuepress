@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>height</title>
+</head>
+
+<body>
+  <style type="text/css">
+    .height-div1 {
+      height: 100%;
+      width: 100%;
+      background-color: #ccc;
+    }
+  </style>
+  <h2>场景一</h2>
+  <div class="height-div1"></div>
+
+  <style type="text/css">
+    .height-div2 {
+      display: inline-block;
+      white-space: nowrap;
+      background-color: #cd0000;
+    }
+
+    .height-div2 .text {
+      display: inline-block;
+      width: 100%;
+      background-color: #34538b;
+      color: #fff;
+    }
+    .height-div2 img {
+      width: 200px;
+    }
+  </style>
+  <h2>场景二</h2>
+
+  <div class="height-div2">
+    <img src="/img/img1.jpg">
+    <span class="text">红色背景是父级</span>
+  </div>
+</body>
+
+</html>

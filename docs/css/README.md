@@ -167,22 +167,22 @@ float 元素对齐的参考实体“行框盒子”对于块状元素也同样�
 往上移动，完全失效。其原理和上面图片底部留有间隙实际上是一样的，图片的前面有个“幽
 灵空白节点”，而在 CSS 世界中，非主动触发位移的内联元素是不可能跑到计算容器外面的，
 导致图片的位置被“幽灵空白节点”的 vertical-align:baseline 给限死了。
-案例：https://codepen.io/billscofield/pen/GBeoJr/
+案例：https://codepen.io/billscofield/pen/GBeoJr/ 
 ```
 ## BFC
 ## 关于 height:100%
+* <a href="/css/demo/height.html" target="_blank">demo</a>
 ```html
 height 和 width 还有一个比较明显的区别就是对百分比单位的支持。对于 width 属性，
 就算父元素 width 为 auto，其百分比值也是支持的；但是，对于 height 属性，如果父元素
-34 第 3 章 流、元素与基本尺寸
 height 为 auto，只要子元素在文档流中，其百分比值完全就被忽略了。例如，某小白想要在
 页面插入一个'<div>'，然后满屏显示背景图，就写了如下 CSS：
 
-div { 
- width: 100%; /* 这是多余的 */ 
- height: 100%; /* 这是无效的 */ 
- background: url(bg.jpg); 
-}
+.height-div1 {
+    height: 100%;
+    width: 100%;
+    background-color: #ccc;
+  }
 
 然后他发现这个<div>高度永远是 0，哪怕其父级<body>塞满了内容也是如此。事实上，他需
 要如下设置才行：
@@ -209,25 +209,26 @@ vertical-align 为 bottom 同时高度为 192 像素的图片，此时，该<div
 实际上，这种解释是错误的，大家千万别被误导。证据就是宽度也存在类似场景，但并没
 有死循环。例如，在下面这个例子中，父元素采用“最大宽度”，然后有一个 inline-block
 子元素宽度 100%：
-<div class="box"> 
- <img src="1.jpg"> 
- <span class="text">红色背景是父级</span> 
-</div> 
-.box { 
- display: inline-block; 
- white-space: nowrap; 
- background-color: #cd0000; 
-} 
-width/height 作用的具体细节
-.text { 
- display: inline-block; 
- width: 100%; 
- background-color: #34538b; 
- color: #fff; 
-} 
+  .height-div2 {
+    display: inline-block;
+    white-space: nowrap;
+    background-color: #cd0000;
+  }
+
+  .height-div2 .text {
+    display: inline-block;
+    width: 100%;
+    background-color: #34538b;
+    color: #fff;
+  }
+
+  <div class="height-div2">
+    <img src="/img/img1.jpg">
+    <span class="text">红色背景是父级 document.body.clientWidth</span>
+  </div>
 如果按照上面“高度死循环”的解释，这里也应该“宽度死循环”，因为后面的 inline-block
 元素按照我们的理解应该会让父元素的宽度进一步变大。但实际上并没有，宽度范围可能超出
-你的预期。父元素的宽度就是图片加文字内容的宽度之和。
+你的预期。宽度就是图片加文字内容的宽度。
 为什么会这样表现呢？
 要明白其中的原因要先了解浏览器渲染的基本原理。首先，先下载文档内容，加载头部的
 样式资源（如果有的话），然后按照从上而下、自外而内的顺序渲染 DOM 内容。套用本例就是，
@@ -244,8 +245,8 @@ auto。一句话总结就是：因为解释成了 auto。要知道，auto 和百
 'auto' * 100/100 = NaN 
 但是，宽度的解释却是：如果包含块的宽度取决于该元素的宽度，那么产生的布局在 CSS 2.1
 中是未定义的。
-还记不记得本书第 2 章最后的“未定义行为”吗？这里的宽度布局其实也是“未定义行为”，
-也就是规范没有明确表示该怎样，浏览器可以自己根据理解去发挥。好在根据我的测试，布局
+这里的宽度布局其实也是“未定义行为”，
+也就是规范没有明确表示该怎样，浏览器可以自己根据理解去发挥。常见的浏览器中的测试，布局
 效果在各个浏览器下都是一致的。这里和高度的规范定义就区别明显了，高度明确了就是 auto，
 高度百分比计算自然无果，width 却没有这样的说法，因此，就按照包含块真实的计算值作为
 百分比计算的基数。

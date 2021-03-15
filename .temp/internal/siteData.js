@@ -8,6 +8,13 @@ export const siteData = {
   "headTags": [],
   "pages": [
     {
+      "frontmatter": {},
+      "regularPath": "/about.html",
+      "relativePath": "about.md",
+      "key": "v-10061e16",
+      "path": "/about.html"
+    },
+    {
       "title": "Home",
       "frontmatter": {
         "home": true,
@@ -37,20 +44,6 @@ export const siteData = {
       "path": "/"
     },
     {
-      "frontmatter": {},
-      "regularPath": "/about.html",
-      "relativePath": "about.md",
-      "key": "v-10061e16",
-      "path": "/about.html"
-    },
-    {
-      "frontmatter": {},
-      "regularPath": "/contact.html",
-      "relativePath": "contact.md",
-      "key": "v-529680b6",
-      "path": "/contact.html"
-    },
-    {
       "title": "ceshi",
       "frontmatter": {},
       "regularPath": "/css/one.html",
@@ -69,6 +62,13 @@ export const siteData = {
           "slug": "safdasd"
         }
       ]
+    },
+    {
+      "frontmatter": {},
+      "regularPath": "/contact.html",
+      "relativePath": "contact.md",
+      "key": "v-529680b6",
+      "path": "/contact.html"
     },
     {
       "title": "css常见问题",
@@ -198,6 +198,13 @@ export const siteData = {
       ]
     },
     {
+      "frontmatter": {},
+      "regularPath": "/module/one.html",
+      "relativePath": "module/one.md",
+      "key": "v-58b42409",
+      "path": "/module/one.html"
+    },
+    {
       "title": "组件",
       "frontmatter": {},
       "regularPath": "/module/",
@@ -246,13 +253,6 @@ export const siteData = {
           "slug": "web-components-新的组件方式"
         }
       ]
-    },
-    {
-      "frontmatter": {},
-      "regularPath": "/module/one.html",
-      "relativePath": "module/one.md",
-      "key": "v-58b42409",
-      "path": "/module/one.html"
     },
     {
       "frontmatter": {},
