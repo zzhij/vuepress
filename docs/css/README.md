@@ -306,6 +306,166 @@ div {
 右半区都能自动和图片高度一模一样，无须任何使用 JavaScript 的计算。
 ```
 ## vertical-align
+```html
+抛开 inherit 这类全局属性值不谈，我把 vertical-align 属性值分为以下 4 类：
+• 线类，如 baseline（默认值）、top、middle、bottom； 
+• 文本类，如 text-top、text-bottom； 
+• 上标下标类，如 sub、super； 
+• 数值百分比类，如 20px、2em、20%等。
+实际上，“数值百分比类”应该是两类，分别是“数值类”和“百分比类”，这里之所以把
+它们合在一起归为一类，是因为它们有不少共性，包括“都带数字”和“行为表现一致”。
+```
+* <a href="/css/demo/vertical-align.html" target="_blank">demo</a>
+
+### vertical-align 作用的前提
+```html
+因为 vertical-align 起作用是有前提条件的，这个前提条件就是：只能应用于内联元
+素以及 display 值为 table-cell 的元素。
+换句话说，vertical-align 属性只能作用在 display 计算值为 inline、inlineblock，inline-table 或 table-cell 的元素上。因此，默认情况下，<span>、<strong>、
+<em>等内联元素，<img>、<button>、<input>等替换元素，非 HTML 规范的自定义标签
+元素，以及<td>单元格，都是支持 vertical-align 属性的，其他块级元素则不支持。
+当然，现实世界是没有这么简单的。CSS 世界中，有一些 CSS 属性值会在背后默默
+地改变元素 display 属性的计算值，从而导致 vertical-align 不起作用。比方说，
+浮动和绝对定位会让元素块状化，因此，下面的代码组合 vertical-align 是没有理由
+出现的：
+有一些 CSS 属性值会在背后默默
+地改变元素 display 属性的计算值，从而导致 vertical-align 不起作用。比方说，
+浮动和绝对定位会让元素块状化，因此，下面的代码组合 vertical-align 是没有理由
+出现的：
+.example { 
+ float: left; 
+ vertical-align: middle; /* 没有作用 */ 
+} 
+.example { 
+ position: absolute; 
+ vertical-align: middle; /* 没有作用 */ 
+}
+
+我好像听到有人说：“不是 vertical-align 没有作用，而是下面这种情况。”
+
+<style>
+    .vertical-div2 { 
+      height: 128px; 
+    } 
+    .vertical-div2 img { 
+      height: 96px; 
+      vertical-align: middle; 
+    }
+  </style>
+  <h2>场景二</h2>
+  <div class="vertical-div2">
+    
+    <img src="/img/img1.jpg">
+  </div>
+此时图片顶着.ertical-div2 元素的上边缘显示，根本没垂直居中，完全没起作用！
+这种情况看上去是 vertical-align:middle 没起作用，实际上，vertical-align
+是在努力地渲染的，只是行框盒子前面的“幽灵空白节点”高度太小，如果我们通过设置一个
+足够大的行高让“幽灵空白节点”高度足够，就会看到 vertical-align:middle 起作用了，
+CSS 代码如下：
+
+.vertical-div2 { 
+  height: 128px;
+  line-height: 128px; /* 关键 CSS 属性 */ 
+} 
+.vertical-div2 img { 
+  height: 96px; 
+  vertical-align: middle; 
+}
+```
+
+### vertical-align 和 line-height 之间的关系
+
+```html
+vertical-align 和 line-height 之间的关系很明确，即“朋友”关系。
+最明显的就是 vertical-align 的百分比值是相对于 line-height 计算的，但表面所
+见的这点关系实际是只是冰山一角，实际是只要出现内联元素，这对好朋友一定会同时出现。？这就
+是这对好朋友搞的鬼。这里要为大家深入讲解一下为什么会出现这样的现象。首先，我们仔细
+看一下相关的代码：
+<style>
+    .vertical-div3 {
+      line-height: 32px;
+    }
+
+    .vertical-div3 span {
+      font-size: 24px;
+    }
+  </style>
+  <h2>场景三 </h2>
+  <div class="vertical-div3">
+    x<span>文字 x</span>
+  </div>
+其中有一个很关键的点，那就是 24px 的 font-size 大小是设置在<span>元素上的，这就导
+致了外部<div>元素的字体大小和<span>元素有较大出入。
+这里也是类似的，<span>标签前面实际上有一个看不见的类似
+字符的“幽灵空白节点”。看不见的东西不利于理解，因此我们不妨使用一个看得见的字符 x
+占位，同时“文字”后面也添加一个 x，便于看出基线位置，于是就有如下 HTML：
+
+<div class="vertical-div3">
+  x<span>文字 x</span>
+</div>
+此时，我们可以明显看到两处大小完全不同的文字。一处是字母 x 构成了一个“匿名内联
+盒子”，另一处是“文字 x”所在的<span>元素，构成了一个“内联盒子”。由于都受 lineheight:32px 影响，因此，这两个“内联盒子”的高度都是 32px。下面关键的来了，对字符
+而言，font-size 越大字符的基线位置越往下，因为文字默认全部都是基线对齐，所以当字
+号大小不一样的两个文字在一起的时候，彼此就会发生上下位移，如果位移距离足够大，就会
+超过行高的限制，而导致出现意料之外的高度。
+
+非常直观地说明了为何最后容器的高度会是 36px，而非 line-height 设置的
+32px。
+
+
+知道了问题发生的原因，那问题就很好解决了。我们可以让“幽灵空白节点”和后面<span>
+元素字号一样大，也就是：
+.vertical-div4 {
+  line-height: 32px; 
+  font-size: 24px; 
+}
+
+.vertical-div4 span {
+  font-size: 24px;
+}
+或者改变垂直对齐方式，如顶部对齐，这样就不会有参差位移了：
+.vertical-div4 { line-height: 32px; } 
+.vertical-div4 span { 
+ font-size: 24px; 
+ vertical-align: top; 
+} 
+搞清楚了大小字号文字的高度问题，对更为常见的图片底部留有间隙的问题的理解就容易
+多了。现象是这样的：任意一个块级元素，里面若有图片，则块级元素高度基本上都要比图片
+的高度高。例如：
+.box { 
+ width: 280px; 
+ outline: 1px solid #aaa; 
+ text-align: center; 
+} 
+.box > img { 
+ height: 96px; 
+}
+<div class="box"> 
+ <img src="1.jpg"> 
+</div> 
+结果.box ，底部平白无故多了 5 像素。
+间隙产生的三大元凶就是“幽灵空白节点”、line-height 和 vertical-align 属性。
+为了直观演示原理，我们可以在图片前面辅助一个字符 x 代替“幽灵空白节点”，并想办法通过
+背景色显示其行高范围
+
+当前 line-height 计算值是 20px，而 font-size 只有 14px，因此，字母 x 往下一定
+有至少 3px 的半行间距（具体大小与字体有关），而图片作为替换元素其基线是自身的下边缘。
+根据定义，默认和基线（也就是这里字母 x 的下边缘）对齐，字母 x 往下的行高产生的多余的
+间隙就嫁祸到图片下面，让人以为是图片产生的间隙，实际上，是“幽灵空白节点”、
+line-height 和 vertical-align 属性共同作用的结果。
+
+
+知道了原理，要清除该间隙，就知道如何对症下药了。方法很多，具体如下。
+（1）图片块状化。可以一口气干掉“幽灵空白节点”、line-height 和 verticalalign。 
+（2）容器 line-height 足够小。只要半行间距小到字母 x 的下边缘位置或者再往上，自
+然就没有了撑开底部间隙高度空间了。比方说，容器设置 line-height:0。 
+（3）容器 font-size 足够小。此方法要想生效，需要容器的 line-height 属性值和当
+前 font-size 相关，如 line-height:1.5 或者 line-height:150%之类；否则只会让下
+面的间隙变得更大，因为基线位置因字符 x 变小而往上升了。
+（4）图片设置其他 vertical-align 属性值。间隙的产生原因之一就
+是基线对齐，所以我们设置 vertical-align 的值为 top、middle、
+bottom 中的任意一个都是可以的。
+```
 ## float
 ## 1px问题
 ### 像素比 dpi

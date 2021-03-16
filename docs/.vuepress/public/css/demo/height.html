@@ -42,6 +42,64 @@
     <img src="/img/img1.jpg">
     <span class="text">红色背景是父级</span>
   </div>
+
+  <style>
+    .height-div3 {
+      height: 100%;
+    }
+  </style>
+  <h2>场景三</h2>
+
+  <div class="height-div3">
+  </div>
+
+
+  <style>
+    .height-div4 {
+      height: 100%; 
+      position: absolute; 
+    }
+  </style>
+  <h2>场景四 定位高度</h2>
+
+  <div class="height-div4">
+    定位高度
+  </div>
+
+
+  <style>
+    .height-div5 {
+      height: 160px; 
+      padding: 30px; 
+      box-sizing: border-box; 
+      background-color: #beceeb; 
+    }
+    .height-div5 .height-child5 {
+      height: 100%; 
+      background-color: #cd0000; 
+    }
+    .height-div5-1 {
+      height: 160px; 
+      padding: 30px; 
+      box-sizing: border-box; 
+      background-color: #beceeb; 
+      position: relative;
+    }
+    .height-div5-1 .height-child5-1 {
+      height: 100%; width: 100%; 
+      background-color: #cd0000; 
+      position: absolute; 
+    }
+  </style>
+  <h2 style="margin-top:1000px;">场景五 定位高度</h2>
+
+  <div class="height-div5">
+    <div class="height-child5"></div>
+  </div>
+  <h2>````</h2>
+  <div class="height-div5-1">
+    <div class="height-child5-1"></div>
+  </div>
 </body>
 
 </html>

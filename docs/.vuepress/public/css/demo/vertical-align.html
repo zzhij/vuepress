@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vertical-align</title>
+</head>
+
+<body>
+  <style>
+    .vertical-div1 {
+      background: red;
+    }
+
+    .vertical-div1 img {
+      height: 96px;
+      vertical-align: 0;
+      /* baseline */
+    }
+  </style>
+  <h2>场景一</h2>
+  <div class="vertical-div1">
+
+    <img src="/img/img1.jpg">
+    X
+    <span>12</span>
+  </div>
+
+
+  <style>
+    .vertical-div2 {
+      height: 128px;
+    }
+
+    .vertical-div2 img {
+      height: 96px;
+      vertical-align: middle;
+    }
+  </style>
+  <h2>场景二</h2>
+  <div class="vertical-div2">
+
+    <img src="/img/img1.jpg">
+  </div>
+
+  <style>
+    .vertical-div3 {
+      line-height: 32px;
+    }
+
+    .vertical-div3 span {
+      font-size: 24px;
+    }
+  </style>
+  <h2>场景三 </h2>
+  <div class="vertical-div3">
+    x<span>文字 x</span>
+  </div>
+
+  <style>
+    .vertical-div4 {
+      line-height: 32px; 
+      font-size: 24px; 
+    }
+
+    .vertical-div4 span {
+      font-size: 24px;
+    }
+  </style>
+  <h2>场景四 </h2>
+  <div class="vertical-div4">
+    x<span>文字 x</span>
+  </div>
+</body>
+
+</html>

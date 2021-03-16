@@ -8,13 +8,6 @@ export const siteData = {
   "headTags": [],
   "pages": [
     {
-      "frontmatter": {},
-      "regularPath": "/about.html",
-      "relativePath": "about.md",
-      "key": "v-10061e16",
-      "path": "/about.html"
-    },
-    {
       "title": "Home",
       "frontmatter": {
         "home": true,
@@ -44,31 +37,11 @@ export const siteData = {
       "path": "/"
     },
     {
-      "title": "ceshi",
       "frontmatter": {},
-      "regularPath": "/css/one.html",
-      "relativePath": "css/one.md",
-      "key": "v-2d66e0ae",
-      "path": "/css/one.html",
-      "headers": [
-        {
-          "level": 2,
-          "title": "ceshi",
-          "slug": "ceshi-2"
-        },
-        {
-          "level": 2,
-          "title": "safdasd",
-          "slug": "safdasd"
-        }
-      ]
-    },
-    {
-      "frontmatter": {},
-      "regularPath": "/contact.html",
-      "relativePath": "contact.md",
-      "key": "v-529680b6",
-      "path": "/contact.html"
+      "regularPath": "/about.html",
+      "relativePath": "about.md",
+      "key": "v-10061e16",
+      "path": "/about.html"
     },
     {
       "title": "css常见问题",
@@ -129,6 +102,16 @@ export const siteData = {
           "slug": "vertical-align"
         },
         {
+          "level": 3,
+          "title": "vertical-align 作用的前提",
+          "slug": "vertical-align-作用的前提"
+        },
+        {
+          "level": 3,
+          "title": "vertical-align 和 line-height 之间的关系",
+          "slug": "vertical-align-和-line-height-之间的关系"
+        },
+        {
           "level": 2,
           "title": "float",
           "slug": "float"
@@ -156,6 +139,48 @@ export const siteData = {
       ]
     },
     {
+      "frontmatter": {},
+      "regularPath": "/contact.html",
+      "relativePath": "contact.md",
+      "key": "v-529680b6",
+      "path": "/contact.html"
+    },
+    {
+      "title": "图形效果",
+      "frontmatter": {},
+      "regularPath": "/css/one.html",
+      "relativePath": "css/one.md",
+      "key": "v-2d66e0ae",
+      "path": "/css/one.html",
+      "headers": [
+        {
+          "level": 2,
+          "title": "demo",
+          "slug": "demo"
+        }
+      ]
+    },
+    {
+      "title": "前端案例",
+      "frontmatter": {},
+      "regularPath": "/css/two.html",
+      "relativePath": "css/two.md",
+      "key": "v-1c1af92e",
+      "path": "/css/two.html",
+      "headers": [
+        {
+          "level": 2,
+          "title": "创意特效",
+          "slug": "创意特效"
+        },
+        {
+          "level": 2,
+          "title": "案例",
+          "slug": "案例"
+        }
+      ]
+    },
+    {
       "title": "ceshi",
       "frontmatter": {
         "sidebar": "auto"
@@ -176,33 +201,6 @@ export const siteData = {
           "slug": "safdasd"
         }
       ]
-    },
-    {
-      "title": "前端案例",
-      "frontmatter": {},
-      "regularPath": "/css/two.html",
-      "relativePath": "css/two.md",
-      "key": "v-1c1af92e",
-      "path": "/css/two.html",
-      "headers": [
-        {
-          "level": 2,
-          "title": "创意特效",
-          "slug": "创意特效"
-        },
-        {
-          "level": 2,
-          "title": "safdasd",
-          "slug": "safdasd"
-        }
-      ]
-    },
-    {
-      "frontmatter": {},
-      "regularPath": "/module/one.html",
-      "relativePath": "module/one.md",
-      "key": "v-58b42409",
-      "path": "/module/one.html"
     },
     {
       "title": "组件",
@@ -253,6 +251,13 @@ export const siteData = {
           "slug": "web-components-新的组件方式"
         }
       ]
+    },
+    {
+      "frontmatter": {},
+      "regularPath": "/module/one.html",
+      "relativePath": "module/one.md",
+      "key": "v-58b42409",
+      "path": "/module/one.html"
     },
     {
       "frontmatter": {},
