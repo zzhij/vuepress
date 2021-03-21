@@ -8,13 +8,6 @@ export const siteData = {
   "headTags": [],
   "pages": [
     {
-      "frontmatter": {},
-      "regularPath": "/about.html",
-      "relativePath": "about.md",
-      "key": "v-10061e16",
-      "path": "/about.html"
-    },
-    {
       "title": "Home",
       "frontmatter": {
         "home": true,
@@ -42,6 +35,13 @@ export const siteData = {
       "relativePath": "README.md",
       "key": "v-69c0ee05",
       "path": "/"
+    },
+    {
+      "frontmatter": {},
+      "regularPath": "/about.html",
+      "relativePath": "about.md",
+      "key": "v-10061e16",
+      "path": "/about.html"
     },
     {
       "frontmatter": {},
@@ -82,11 +82,6 @@ export const siteData = {
           "level": 3,
           "title": "无效的场景",
           "slug": "无效的场景"
-        },
-        {
-          "level": 2,
-          "title": "BFC",
-          "slug": "bfc"
         },
         {
           "level": 2,
@@ -144,9 +139,14 @@ export const siteData = {
           "slug": "float"
         },
         {
-          "level": 2,
-          "title": "1px问题",
-          "slug": "_1px问题"
+          "level": 3,
+          "title": "float 的本质与特性",
+          "slug": "float-的本质与特性"
+        },
+        {
+          "level": 3,
+          "title": "float 的作用机制",
+          "slug": "float-的作用机制"
         },
         {
           "level": 3,
@@ -160,7 +160,7 @@ export const siteData = {
         },
         {
           "level": 3,
-          "title": "手机像素显示问题",
+          "title": "手机像素显示问题 -->",
           "slug": "手机像素显示问题"
         }
       ]
@@ -274,17 +274,17 @@ export const siteData = {
     },
     {
       "frontmatter": {},
-      "regularPath": "/module/two.html",
-      "relativePath": "module/two.md",
-      "key": "v-6b92363d",
-      "path": "/module/two.html"
-    },
-    {
-      "frontmatter": {},
       "regularPath": "/module/one.html",
       "relativePath": "module/one.md",
       "key": "v-58b42409",
       "path": "/module/one.html"
+    },
+    {
+      "frontmatter": {},
+      "regularPath": "/module/two.html",
+      "relativePath": "module/two.md",
+      "key": "v-6b92363d",
+      "path": "/module/two.html"
     }
   ],
   "themeConfig": {
