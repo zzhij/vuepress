@@ -493,21 +493,26 @@ bottom 中的任意一个都是可以的。
 font-size 决定的，但本质上是由 line-height 属性全权决定的，尽管某些场景确实与
 font-size 大小有关。
 我们不妨设计一个简单的例子来看看真相究竟是什么。例如：
-<div class="test1">我的高度是？</div> 
-.test1 { 
- font-size: 16px; 
- line-height: 0; 
- border: 1px solid #ccc; 
- background: #eee; 
-} 
-和
-<div class="test2">我的高度是？</div> 
-.test1 { 
- font-size: 0; 
- line-height: 16px; 
- border: 1px solid #ccc; 
- background: #eee; 
-} 
+
+  <style>
+    .line-div1 {
+      font-size: 16px;
+      line-height: 0;
+      border: 1px solid #ccc;
+      background: #eee;
+    }
+
+    .line-div1-1 {
+      font-size: 0;
+      line-height: 16px;
+      border: 1px solid #ccc;
+      background: #eee;
+      margin-top: 30px;
+    }
+  </style>
+  <h2>场景一 </h2>
+  <div class="line-div1">我的高度是？</div>
+  <div class="line-div1-1">我的高度是？</div>
 这两段代码的区别在于一个 line-height 行高为 0，一个 font-size 字号为 0。结果，第
 一段代码，最后元素的高度只剩下边框那么丁点儿，而后面
 一段代码，虽然文字小到都看不见了，但是 16px 的内部高度依然坚挺.
