@@ -44,11 +44,68 @@ export const siteData = {
       "path": "/about.html"
     },
     {
+      "title": "图形效果",
+      "frontmatter": {},
+      "regularPath": "/css/one.html",
+      "relativePath": "css/one.md",
+      "key": "v-2d66e0ae",
+      "path": "/css/one.html",
+      "headers": [
+        {
+          "level": 2,
+          "title": "demo",
+          "slug": "demo"
+        }
+      ]
+    },
+    {
       "frontmatter": {},
       "regularPath": "/contact.html",
       "relativePath": "contact.md",
       "key": "v-529680b6",
       "path": "/contact.html"
+    },
+    {
+      "title": "前端案例",
+      "frontmatter": {},
+      "regularPath": "/css/two.html",
+      "relativePath": "css/two.md",
+      "key": "v-1c1af92e",
+      "path": "/css/two.html",
+      "headers": [
+        {
+          "level": 2,
+          "title": "创意特效",
+          "slug": "创意特效"
+        },
+        {
+          "level": 2,
+          "title": "案例",
+          "slug": "案例"
+        }
+      ]
+    },
+    {
+      "title": "ceshi",
+      "frontmatter": {
+        "sidebar": "auto"
+      },
+      "regularPath": "/guide/",
+      "relativePath": "guide/README.md",
+      "key": "v-1236e218",
+      "path": "/guide/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "ceshi",
+          "slug": "ceshi-2"
+        },
+        {
+          "level": 2,
+          "title": "safdasd",
+          "slug": "safdasd"
+        }
+      ]
     },
     {
       "title": "css常见问题",
@@ -147,78 +204,6 @@ export const siteData = {
           "level": 3,
           "title": "float 的作用机制",
           "slug": "float-的作用机制"
-        },
-        {
-          "level": 3,
-          "title": "像素比 dpi",
-          "slug": "像素比-dpi"
-        },
-        {
-          "level": 3,
-          "title": "马赛克",
-          "slug": "马赛克"
-        },
-        {
-          "level": 3,
-          "title": "手机像素显示问题 -->",
-          "slug": "手机像素显示问题"
-        }
-      ]
-    },
-    {
-      "title": "图形效果",
-      "frontmatter": {},
-      "regularPath": "/css/one.html",
-      "relativePath": "css/one.md",
-      "key": "v-2d66e0ae",
-      "path": "/css/one.html",
-      "headers": [
-        {
-          "level": 2,
-          "title": "demo",
-          "slug": "demo"
-        }
-      ]
-    },
-    {
-      "title": "前端案例",
-      "frontmatter": {},
-      "regularPath": "/css/two.html",
-      "relativePath": "css/two.md",
-      "key": "v-1c1af92e",
-      "path": "/css/two.html",
-      "headers": [
-        {
-          "level": 2,
-          "title": "创意特效",
-          "slug": "创意特效"
-        },
-        {
-          "level": 2,
-          "title": "案例",
-          "slug": "案例"
-        }
-      ]
-    },
-    {
-      "title": "ceshi",
-      "frontmatter": {
-        "sidebar": "auto"
-      },
-      "regularPath": "/guide/",
-      "relativePath": "guide/README.md",
-      "key": "v-1236e218",
-      "path": "/guide/",
-      "headers": [
-        {
-          "level": 2,
-          "title": "ceshi",
-          "slug": "ceshi-2"
-        },
-        {
-          "level": 2,
-          "title": "safdasd",
-          "slug": "safdasd"
         }
       ]
     },
