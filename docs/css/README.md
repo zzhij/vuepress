@@ -432,18 +432,22 @@ vertical-align 和 line-height 之间的关系很明确，即“朋友”关系�
 搞清楚了大小字号文字的高度问题，对更为常见的图片底部留有间隙的问题的理解就容易
 多了。现象是这样的：任意一个块级元素，里面若有图片，则块级元素高度基本上都要比图片
 的高度高。例如：
-.box { 
- width: 280px; 
- outline: 1px solid #aaa; 
- text-align: center; 
-} 
-.box > img { 
- height: 96px; 
-}
-<div class="box"> 
- <img src="1.jpg"> 
-</div> 
-结果.box ，底部平白无故多了 5 像素。
+  <style>
+    .vertical-div5 {
+      width: 280px;
+      outline: 1px solid #aaa;
+      text-align: center;
+    }
+
+    .vertical-div5 img {
+      height: 96px;
+    }
+  </style>
+  <h2>场景五 </h2>
+  <div class="vertical-div5">
+    <img src="/img/img1.jpg">
+  </div>
+结果.vertical-div5 ，底部平白无故多了 4 像素。
 间隙产生的三大元凶就是“幽灵空白节点”、line-height 和 vertical-align 属性。
 为了直观演示原理，我们可以在图片前面辅助一个字符 x 代替“幽灵空白节点”，并想办法通过
 背景色显示其行高范围
@@ -466,6 +470,156 @@ line-height 和 vertical-align 属性共同作用的结果。
 是基线对齐，所以我们设置 vertical-align 的值为 top、middle、
 bottom 中的任意一个都是可以的。
 ```
+
+
+## line-height
+* 内联元素的基石 line-height 下面中所有的“行高”指的就是 line-height。
+* <a href="/css/demo/line-height.html" target="_blank">demo</a>
+```js
+<script type="text/javascript">
+  var style = document.body.currentStyle || document.defaultView.getComputedStyle(document.body, '')
+  console.log(style.fontSize);
+  var div = document.getElementById('div');
+  console.log(div.style.fontSize);
+</script>
+```
+### 内联元素的高度之本 -- 基础高度
+
+* <a href="https://img-blog.csdnimg.cn/20201014225605688.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1MxMTIyX2hx,size_16,color_FFFFFF,t_70#pic_center" target="_blank">行距班行距说明</a>
+```html
+先思考下面这个问题：默认空<div>高度是 0，但是一旦里面写上几个文字，<div>高度
+就有了，请问这个高度由何而来，或者说是由哪个 CSS 属性决定的？
+如果仅仅通过表象来确认，估计不少人会认为<div>高度是由里面的文字撑开的，也就是
+font-size 决定的，但本质上是由 line-height 属性全权决定的，尽管某些场景确实与
+font-size 大小有关。
+我们不妨设计一个简单的例子来看看真相究竟是什么。例如：
+<div class="test1">我的高度是？</div> 
+.test1 { 
+ font-size: 16px; 
+ line-height: 0; 
+ border: 1px solid #ccc; 
+ background: #eee; 
+} 
+和
+<div class="test2">我的高度是？</div> 
+.test1 { 
+ font-size: 0; 
+ line-height: 16px; 
+ border: 1px solid #ccc; 
+ background: #eee; 
+} 
+这两段代码的区别在于一个 line-height 行高为 0，一个 font-size 字号为 0。结果，第
+一段代码，最后元素的高度只剩下边框那么丁点儿，而后面
+一段代码，虽然文字小到都看不见了，但是 16px 的内部高度依然坚挺.
+很显然，从上面这个例子可以看出，<div>高度是由行
+高决定的，而非文字。
+
+对于文本这样的纯内联元素，line-height 就是高度计算的
+基石，用专业说法就是指定了用来计算行框盒子高度的基础高度。比方说，line-height 设为
+16px，则一行文字高度是 16px，两行就是 32px，三行就是 48px，所有浏览器渲染解析都是
+这个值，1 像素都不差。
+
+如果是块级元素，line-height 在其中又扮演什么角色呢？
+在回答这个问题之前，我们最好先把 line-height 作用于内联元素的细节给搞明白。
+通常，line-height 的高度作用细节都是使用“行距”和“半行距”来解释的。那么什
+么是“行距”，什么又是“半行距”呢？
+
+首先大家需要明确这一点：字体设计以及文字排版是门很深入的学问，英文和中文又有很
+多不同之处，但是，我们平常构建页面无须如此事无巨细的知识。因此，这里只简单介绍部分
+知识.
+我个人是这么认为的：内联元素的高度由固定高度和不固定高度组成，这个不固定的部
+分就是这里的“行距”。换句话说，line-height 之所以起作用，就是通过改变“行距”来
+实现的。
+
+中国古代四大发明之一的活字印刷术使用的是雕刻好的胶泥字模，大家可以回忆一下北
+京奥运会开幕式上活字印刷术表演中那些凸起的方块，它使用的字体是宋体，注意，是宋体。
+然而，如果这些方块都是密密麻麻无缝隙铺在一起，印出来的文字就是方方正正的一团，
+那么我们会无法一眼看出应该横着读还是竖着念。要知道古人的排版是竖排的，但我们去看古人的印刷
+作品却不会错误地横着看，为什么呢？因为印出来的文字垂直方向确实一个接着一个，但是，水
+平方向，列与列之间却有着明显的间隙, 这个间隙其实就是“行距”。
+所以，“行距”的作用是可以瞬间明确我们的阅读方向，让我们阅读文字更轻松。在 CSS 世
+界中，“行距”其实也是类似的东西，但还是有些差别的。以水平阅读流举例，传统印刷的“行距”
+是上下两行文字之间预留的间隙，是个独立的区域，也就意味着第一行文字的上方是没有“行距”
+的；但是在 CSS 中，“行距”分散在当前文字的上方和下方，也就是即使是第一行文字，其上方也
+是有“行距”的，只不过这个“行距”的高度仅仅是完整“行距”高度的一半，因此，也被称为“半
+行距”。
+
+设计图和实际开发中有可能会遇到的问题。设计师并不是开发人员，他们并没有把网页中无处不
+在行间距考虑在内，所有与文字相关的间距都是从文字的上边缘和下边缘开始标注的。除非我
+们全局行高设置为 line-height:1，否则这些标注的距离和我们使用的 margin 间距都是不
+一致的
+
+```
+
+### line-height 可以让内联元素“垂直居中”
+
+```html
+坊间流传着这么一种说法：“要想让单行文字垂直居中，只要设置 line-height 大小和
+height 高度一样就可以了。”类似下面这样的代码：
+.title { 
+ height: 24px; 
+ line-height: 24px; 
+} 
+从效果上看，似乎验证了这种说法的正确性。但是，实际上，上面的说法对 CSS 初学者会产生
+两个严重的误导，同时，语句本身也存在不严谨的地方！
+行高控制文字垂直居中，不仅适用于单行，多行也是可以的。准确的说法应该是
+“line-height 可以让单行或多行元素近似垂直居中”。这里有个词似乎和上面的表述
+有点儿微妙的差异，“近似垂直居中”？没错，一定要加上“近似”二字，这样的说法才足够严
+谨。换句话说，我们通过 line-height 设置的垂直居中，并不是真正意义上的垂直居中！究
+竟是怎么一回事？
+这里，其实要解答的是两个问题，一个是为何可以“垂直居中”，另一个是为何是“近似”。
+行高可以实现“垂直居中”原因在于 CSS 中“行距的上下等分机制”，如果行距的添加规则是在文字的上方或者下方，
+则行高是无法让文字垂直居中的。
+说“近似”是因为文字字形的垂直中线位置普遍要比真正的“行框盒子”的垂直中线位置
+低，譬如我们拿现在用得比较多的微软雅黑字体举例：
+<style>
+    .line-div2 {
+      font-size: 80px; 
+      line-height: 120px; 
+      background-color: #666; 
+      font-family: 'microsoft yahei'; 
+      color: #fff;
+    }
+
+  </style>
+  <h2>场景二 </h2>
+  <p class="line-div2">微软雅黑</p>
+由于我们平时使用的 font-size 都比较小，12px～16px 很多，因此，虽然微软雅黑字
+体有下沉，但也就 1 像素的样子，所以我们往往觉察不到
+这种“垂直对齐”其实并不是真正意义上的垂直居中，只
+是感官上看上去像是垂直居中罢了。这也是我总是称
+line-height 实现的单行文本垂直居中为“近似垂直居
+中”的原因。
+
+```
+### 案例
+```html
+  <style>
+    .line-div3 {
+      line-height: 96px;
+    }
+
+    .line-div3 span {
+      line-height: 20px;
+    }
+
+    .line-div3-1 {
+      line-height: 20px;
+    }
+
+    .line-div3-1 span {
+      line-height: 96px;
+    }
+  </style>
+  <h2>场景三 </h2>
+  <div class="line-div3"> 
+    <span>内容...</span> 
+  </div>
+  <div class="line-div3-1"> 
+    <span>内容...</span> 
+  </div>
+```
+
 ## float
 ## 1px问题
 ### 像素比 dpi

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>line-height</title>
+</head>
+
+<body>
+  <style>
+    .line-div1 {
+      font-size: 16px;
+      line-height: 0;
+      border: 1px solid #ccc;
+      background: #eee;
+    }
+
+    .line-div1-1 {
+      font-size: 0;
+      line-height: 16px;
+      border: 1px solid #ccc;
+      background: #eee;
+      margin-top: 30px;
+    }
+  </style>
+  <h2>场景一 </h2>
+  <div class="line-div1">我的高度是？</div>
+  <div class="line-div1-1">我的高度是？</div>
+
+  <style>
+    .line-div2 {
+      font-size: 80px;
+      line-height: 120px;
+      background-color: #666;
+      font-family: 'microsoft yahei';
+      /* // font-family: SimSun; */
+      color: #fff;
+    }
+  </style>
+  <h2>场景二 </h2>
+  <p class="line-div2">微软雅黑</p>
+
+  <style>
+    .line-div3 {
+      line-height: 96px;
+    }
+
+    .line-div3 span {
+      line-height: 20px;
+    }
+
+    .line-div3-1 {
+      line-height: 20px;
+    }
+
+    .line-div3-1 span {
+      line-height: 96px;
+    }
+  </style>
+  <h2>场景三 </h2>
+  <div class="line-div3"> 
+    <span>内容...</span> 
+  </div>
+  <div class="line-div3-1"> 
+    <span>内容...</span> 
+  </div>
+
+</body>
+
+</html>
